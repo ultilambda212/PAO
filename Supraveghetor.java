@@ -1,8 +1,8 @@
 package Admitere;
 
 public class Supraveghetor {
-    private String nume;
-    private String prenume;
+    public String nume;
+    public String prenume;
 
     public Supraveghetor(String nume, String prenume){
         this.nume = nume;

@@ -1,8 +1,8 @@
 package Admitere;
 
 public class SalaExamen {
-    private String sala;
-    private int etaj;
+    public String sala;
+    public int etaj;
     private Domeniu domeniu;
     private Supraveghetor supraveghetori[];
     private Candidat candidati[];

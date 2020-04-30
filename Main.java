@@ -8,8 +8,9 @@ public class Main {
 
     public static void evalueazaCandidati(Candidat candidati[], int oficiu){
         Random rand = new Random();
-        for(int i = 0; i < candidati.length; i++)
+        for(int i = 0; i < candidati.length; i++) {
             candidati[i].setNota(rand.nextInt(100 - oficiu + 1) + oficiu);
+        }
     }
 
     public static void interogari(Facultate facultate){
@@ -39,15 +40,19 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        Citiri CSV = Citiri.getInstance();
         Set<Facultate> Facultati = new HashSet<Facultate>();
         Facultate FMI;
         Vector<Adresa> adreseFacultate = new Vector();
         Adresa adr = new Adresa("Bucuresti", "Str. Academiei", 14, 1, "010014");
         adreseFacultate.add(adr);
 
-        Domeniu domenii[] = loadDomenii();
-        Candidat candidati[] = loadCandidati(domenii[0]);
-        Supraveghetor supraveghetori[] = loadSupraveghetori();
+        Domeniu domenii[] = CSV.loadDomenii("data/Domenii.csv");
+        CSV.writeDomenii(domenii, "data/WrittenDomenii.csv");
+        Candidat candidati[] = CSV.loadCandidati(domenii, "data/Candidati.csv");
+        CSV.writeCandidati(candidati, "data/WrittenCandidati.csv");
+        Supraveghetor supraveghetori[] = CSV.loadSupraveghetori("data/Supraveghetori.csv");
+        CSV.writeSupraveghetori(supraveghetori, "data/WrittenSupraveghetori.csv");
 
 
         SalaExamen saliExamen[] = new SalaExamen[2];
@@ -60,8 +65,9 @@ public class Main {
         supraveghetorSala2[1] = supraveghetori[2];
 
 
-        saliExamen[0] = loadSaliExamen(domenii[0], supraveghetorSala1, candidati);
-        saliExamen[1] = loadSaliExamen(domenii[0], supraveghetorSala2, candidati);
+        saliExamen[0] = CSV.loadSaliExamen(domenii[0], supraveghetorSala1, candidati, "data/SaliExamen.csv");
+        saliExamen[1] = CSV.loadSaliExamen(domenii[0], supraveghetorSala2, candidati, "data/SaliExamen.csv");
+        CSV.writeSaliExamen(saliExamen, "data/WrittenSaliExamen.csv");
 
         FMI = new Facultate(adreseFacultate.get(0), domenii, saliExamen, supraveghetori, candidati);
         FMI.setDescription("Facultatea de Matematica si Informatica din Bucuresti");

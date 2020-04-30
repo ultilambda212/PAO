@@ -2,10 +2,10 @@ package Admitere;
 
 public class Domeniu {
     private String numeDomeniu;
-    private int nrLocuri;
-    private int nrLocuriBuget;
-    private int nrLocuriTaxa;
-    private float taxa;
+    public int nrLocuri;
+    public int nrLocuriBuget;
+    public int nrLocuriTaxa;
+    public float taxa;
 
     public Domeniu(){
         this.numeDomeniu = "";

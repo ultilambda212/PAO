@@ -1,9 +1,9 @@
 package Admitere;
 
 public class Candidat extends Persoana {
-    private int nrCandidat;
-    private String domeniu;
-    private String nota;
+    public int nrCandidat;
+    public String domeniu;
+    public String nota;
 
     public Candidat(){
         super("", "", "", -1);
